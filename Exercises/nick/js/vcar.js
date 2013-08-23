@@ -19,6 +19,10 @@ $( document ).ready(function() {
 	myCar.setSpeed(100);
 	console.log(myCar);
 
+	myCar.setSpeed(110);
+	console.log(myCar);
+
+
 	myCar.setSpeed(150);
 	console.log(myCar);
 
