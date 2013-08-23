@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RocketU Movies</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="assets/css/moviestyles.css">
+		<script src="assets/js/jquery-2.0.3.min.js" type="text/javascript"></script>
+		<script src="assets/js/application-jquery.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		console.log($);
+		$(document).ready(
+			function() {
+				var parent = $('h1').parent();
+				parent
+					.css('color','black')
+					.css('background-color','white');
+			$('h1').on('click',
+				function() {
+					alert($ )
+				}
+				);
+				$('input[type=checkbox]').each(
+					function(){
+						var name=$(this).attr('name');
+						console.log(name);
+					}
+					).attr('name');
+			$('.movies li').each(
+				function(){
+					console.log($(this).html());
+				})
+			$('.action li').each(
+				function(){
+					console.log($(this).html());
+				})
+		})
+		</script>
+	</head>
+	
+	<body>
+	
+		<div id="wrapper">
+		
+			<a href="/"><img id="logo" src="assets/images/rocket-u-logo-large.png" alt="RocketU logo" title="Go to RocketU home page"></a>
+			
+			<h1>Movie Picker</h1>
+			
+			<hr>
+			
+			<p>Hi, thanks for stopping by. We have a great range of movies that you can order,
+				 just choose the genres that you're interested in and then double-click any movie to add it to your pick-list.</p>
+			
+			<div>
+				<input type="checkbox" checked name="action" value="" >Action &amp; Adventure
+				<input type="checkbox" checked name="comedy" value="" >Comedy
+				<input type="checkbox" checked name="scifi" value="" >Sci-Fi &amp; Fantasy
+			</div>
+
+			<p>If you would like to highlight new movies just click the 'Highlight new movies' button below...</p>
+			<p><button id="btn-newmovies" onclick="toggleNewItems(this);">Highlight new movies</button></p>
+		
+			<div id="movies">
+				
+				<h2 class="action">Action &amp; Adventure</h2>
+				<ul id="action-movies" class="movies action">
+				</ul>
+				
+				<h2 class="comedy">Comedy</h2>
+				<ul id="comedy-movies" class="movies comedy">
+				</ul>
+				
+				<h2 class="scifi">Sci-Fi &amp; Fantasy</h2>
+				<ul id="scifi-movies" class="movies scifi">
+				</ul>
+				
+			</div>
+			
+			<div id="picklist">
+			
+				<h2>My Pick-list</h2>
+				<ul class="picklist">
+				</ul>
+				<p id="startnote">Double-click a movie to start your list...</p>
+				
+			</div>
+		
+			<hr>
+			
+			<div id="footer">
+				<p>Copyright &copy; 2013 RocketSpace Inc.</p>
+			</div>
+
+		</div>
+		
+		<script src="assets/js/movies.js"></script>
+	</body>
+	
+</html>

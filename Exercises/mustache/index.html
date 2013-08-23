@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<title>Mustache Template</title>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/mustache.js"></script>
+	<script type="text/javascript" src="js/application2.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/application.css"/>
+</head>
+<body>
+	<!-- <script id="movie-template" type="text/template">
+	// 	<li>
+	// 		<h2>{{title}}</h2>
+	// 		<img src="{{posters.thumbnail}}" style="float: left"/>
+	// 		<span>{{ratings.critics_rating}}</span>
+	// 		<blockquote>{{critics_consensus}}</blockquote>
+	// 		<div style="clear:both">
+	// 			{{#abridged_cast}}
+	// 				{{name}} playing 
+	// 				<ul>{{#characters}}
+	// 					<li>{{.}}</li>
+	// 				{{/characters}}</ul>
+	// 			{{/abridged_cast}}
+	// 		</div>
+			
+	// 	</li>
+	// </script> -->
+	<script id="all-movies-template" type="text/template">
+	{{#movies}}
+		<li>
+			<h2>{{title}}</h2>
+			<img src="{{posters.thumbnail}}" style="float: left"/>
+			<span>{{ratings.critics_rating}}</span>
+			<blockquote>{{critics_consensus}}</blockquote>
+			<div style="clear:both">
+				{{#abridged_cast}}
+					{{name}} playing 
+					<ul>{{#characters}}
+						<li>{{.}}</li>
+					{{/characters}}</ul>
+				{{/abridged_cast}}
+			</div>
+		</li>
+	{{/movies}}
+	</script>
+	<!-- <div id=movies>
+		<ul id=movielist>
+			
+		</ul>
+	</div> -->
+</body>
+</html>

@@ -1,0 +1,38 @@
+function errorHandler () {
+	console.log('error');
+}
+
+// console.log(errorHandler);
+
+// console.log(errorHandler());
+
+// function runFunction(f) {
+// 	f();
+// }
+// runFunction(errorHandler);
+var help = new String("help")
+document.write(String(help));
+console.log(String());
+
+$(document).ready(function(){
+	$("#map").append($("<img>"))
+}
+
+if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(
+		function(position) {
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
+			url = getStaticMapUrl(position.coords);
+			console.log(url);
+			drawMap (url);
+			console.log(position);
+			console.log(lat);
+			console.log(lng);
+		},
+		errorHandler);
+} else {
+
+}
+// get map of current location get location>get map>draw on page
+// var cent = document.getElementById("#map.img.center")

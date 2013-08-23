@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+	<title>JSON Examples</title>
+	<script type="text/javascript">
+		var students = ['Daniel','James','Andrew','Joe','Brian','Chris','Max','Paul','Mike'];
+		console.log(students[2]);
+		console.log(students.length);
+
+		var studentsAttendance = [
+		{name: 'Daniel', isHere: true},
+		{name: 'Paul', isHere: false}
+		];
+		console.log(studentsAttendance.isHere);
+
+		console.log('Students not here.');
+		for(var i=0; i<studentsAttendance.length; i++) {
+			if (studentsAttendance[i].isHere==false) {
+				var name = studentsAttendance[i].name;
+				console.log(name);
+			}
+		var studentsAttendance = [
+		{name: 'Daniel', skills: ['html','css','js'] },
+		{name: 'Joe', skills: ['jquery']}
+		];
+		console.log(studentsAttendance[0].skills[2]);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

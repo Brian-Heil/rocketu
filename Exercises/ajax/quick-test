@@ -1,0 +1,22 @@
+<script type="text/javascript">
+
+$( document ).ready(function(){
+	$.ajax({
+		// Request
+		type: 'get',
+		url: 'http://api.census.gov/data/2010/sf1?key=4467c1f4e16c162f292ea278c3e6f3bede271311',
+		data: {
+			'get': 'P0010001,NAME',
+			'for': 'sta te:*'
+		},
+		// Response
+		dataType: 'json',
+		success : function(json) {
+			console.log(json);
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+});
+</script>

@@ -1,0 +1,71 @@
+/* Style sheet
+	Site: RocketU Movie Picker
+	URL: http://local.training.rocketu/movies
+	Author: Nick Roper
+	Email: nroper@rocket-space.com
+	Created: 10/07/13
+*/
+
+/* General styling */
+
+body {
+	font-family:  Verdana;
+	font-size: 16px;
+	color:  #fff;;
+	background-color: #bbd1e0;
+}
+
+#wrapper {
+	width:  900px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #003054;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;	
+}
+
+#logo {
+	width:  250px;
+	float:  left;
+}
+
+h1 {
+/*	float: left;*/
+	font-size: 36px;
+}
+
+
+/* unordered lists */
+
+ul {
+	width: 300px;
+	padding: 15px;
+	background-color: #7c0106;
+	background-color: #fff;
+	list-style: none;
+	color: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;	
+}
+
+ul li {
+	color: #003054;
+	padding: 2px;
+	
+}
+
+/* layout for the movies and picklist divs */
+
+#movies, #picklist {
+	float: left;
+	width:  50%;
+}
+
+hr {
+	clear: both;
+}
+
+
+

@@ -1,0 +1,58 @@
+/*Used for /index.html bch 8/7/13*/
+
+html {
+  background-color: #061639; }
+body {
+  width: 860px;  
+  padding:20px;  
+  margin: 10px auto;  
+  background-color: #fff;  
+  -webkit-border-radius: 15px;  
+  -moz-border-radius: 15px;  
+  border-radius: 15px; 
+}
+#intro,h1,h2,h3,h4,h5,h6,a {	color:#5a0002;}
+.question {	font-style: italic;}
+ul {	list-style: circle;}
+ol {	list-style: decimal-leading-zero;}
+a {	text-decoration: none;}
+a:hover,a:active { text-decoration: underline;}
+#textinp label {
+    display: inline-block;
+    width: 8em;
+    margin-bottom: 3px;
+}
+#radioinp label { margin-left: 8em;}
+#textinp {
+    margin-bottom: 3px;
+    border-width: 1px;
+    border-color: #333;
+    border-style: solid;
+}
+#checkbox {
+    display: inline-block;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+p+#checkbox:first-child { margin-left: 0px;}
+#langdetail { width: 30%;}
+#courses { float: left;}
+#locations { float: left;}
+#codesabb { clear:both;}
+#upcomcour th {
+    background: #5a0002;
+    color:#fff;
+}
+#upcomcour table,th,tr,td {
+    border: 1px solid #5a0002;
+    padding: 5px
+}
+#upcomcour td:nth-of-type(2), td:nth-of-type(4), td:nth-of-type(6) {
+    text-align: center;
+}
+/*#checkboxinp input[type="checkbox"] { margin-left: 40px;}
+#checkboxinp input[type="checkbox"]:first-child {margin-left: 0;}
+*/
+#checkboxinp label { margin-right: 40px; }
+
+.checkboxes input[type="checkbox"]:first-child { margin-left: 0; }

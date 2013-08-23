@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<title>Question</title>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/application.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/application.css"/>
+</head>
+<body>
+	<div id="splash-page" class="container">
+		<div id="header">
+		
+		</div>
+		<div id="nav" class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="#">FoodsFunster</a>
+				<ul class="nav">
+					<li class="active"><a href="/product/index.html">Login</a></li>
+					<li><a href="queue.html">Queue</a></li>
+					<li><a href="question.html">Question</a></li>
+					<li><a href="yelp.html">Yelp</a></li>
+					<li><a href="people.html">People</a></li>
+					<li><a href="draft.html">Draft</a></li>
+					<li><a href="settings.html">Settings</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<form id="question">
+				<label>Question:
+					<input id="questionbox" type="text" name="firstname" placeholder="Where should I go this Saturday?" size="35";><br>
+				</label>
+			</form>
+			<form id="question">
+				<label>Location:
+					<input id="locationbox" type="text" name="firstname" placeholder="Location?" size="25";><br>
+				</label>
+			</form>
+			<div>
+				<label>Type of Cusine:
+					<!-- replace with search box with yelp categories -->
+					<!-- output category selection to yelp api -->
+					<select>
+						<option value="Italian">Italian</option>
+						<option value="French">French</option>
+						<option value="Chinese">Chinese</option>
+						<option value="Seafood">Seafood</option>
+					</select>
+				</label>
+			</div>
+			<div>
+				<label>Price:
+					<form>
+						<input type="radio" name="price" value="$">$</option>
+						<input type="radio" name="price" value="$$">$$</option>
+						<input type="radio" name="price" value="$$$">$$$</option>
+						<input type="radio" name="price" value="$$$$">$$$$</option>
+					</form>
+				</label>
+			</div>
+			<div>
+				<button id="yelpresults" type="button">Yelp results</button>
+			</div>
+		</div>
+		<div id="footer">
+		
+		</div>
+	</div>
+</body>
+</html>
