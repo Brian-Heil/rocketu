@@ -3,18 +3,22 @@
 <head>
 	<title>Yelp</title>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/yelp.js"></script>
+	<script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
+	<script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
 	<script type="text/javascript" src="js/application.js"></script>
+	<!-- window.load = displayYelpData() -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/application.css"/>
 </head>
 <body>
-	<div id="splash-page" class="container">
+	<div id="yelp-page" class="container">
 		<div id="header">
 		
 		</div>
 		<div id="nav" class="navbar">
 			<div class="navbar-inner">
-				<a class="brand" href="#">FoodsFunster</a>
+				<a class="brand" href="#">Favorite Feast</a>
 				<ul class="nav">
 					<li class="active"><a href="/product/index.html">Login</a></li>
 					<li><a href="queue.html">Queue</a></li>
@@ -28,10 +32,17 @@
 		</div>
 		<div id="content">
 			<!-- need output from yelp filtered picks -->
-		Yelp
-			<div>
-				<button id="pic kpeople" type="button">Pick people</button>
+			<div style="width:900px; float:right">
+				<ul id="yelplist">
+
+				</ul>
 			</div>
+			<div>
+				<button id="pickpeople" type="button">Pick people</button>
+			</div>
+			<!-- <div>
+				<button id="userpick" type="button">User pick</button>
+			</div> -->
 		</div>
 	</div>
 	<div id="footer">
