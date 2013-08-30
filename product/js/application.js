@@ -16,7 +16,8 @@ $( document ).ready(function() {
 	}));
 
 	$("#pickpeople").on('click',(function(){
-		window.location = "/product/people.html"
+		//window.location = "/product/people.html"
+		return false;
 	}));
 
 	$("#draft").on('click',(function(){
@@ -53,15 +54,22 @@ $( document ).ready(function() {
 		console.log('end');
 
 	});
-        
+    
+    // create new variable and put below in array to pass to people
+	var yelpchecked = []
     // this is to get checkbox user input from yelp page
-
+	
 	$('button').on('click',function() {
 		$('ul#yelplist input[type=checkbox]').each(function() {
 			if ($(this).is(':checked')) {
 				console.log($(this).val());
-
+				//yelpchecked = ($(this).val());
+				// console.log(yelpchecked);
+				yelpchecked.push($(this).val())
 			}
+			
+			console.log(yelpchecked)
+	
 		})
 	})
     
@@ -71,7 +79,7 @@ $( document ).ready(function() {
 		console.log(location + ' ' + foodtype);
 		// getYelpData(location,foodtype);
 	}
-	
+
 
 
 });
