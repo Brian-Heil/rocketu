@@ -7,31 +7,32 @@ function getParameterByName(name) {
 
 $( document ).ready(function() {
 
-	$("#loginjquery").on('click',(function(){
+	$("#loginjquery").click(function(){
 		window.location = "/product/queue.html"
-	}));
+	});
 
-	$("#yelpresults").on('click',(function(){
+	$("#yelpresults").click(function(){
 		window.location = "/product/yelp.html"
-	}));
+	});
 
-	$("#pickpeople").on('click',(function(){
+	$("#pickpeople").click(function(){
 		//window.location = "/product/people.html"
 		return false;
-	}));
+	});
 
-	$("#draft").on('click',(function(){
+	$("#draft").click(function(){
 		window.location = "/product/draft.html"
-	}));
+	});
 
-	$("#vote").on('click',(function(){
+	$("#vote").click(function(){
 		window.location = "/product/vote.html"
-	}));
+	});
 
-	$('button#logout').on('click',function() {
+	$('button#logout').click(function() {
 		FB.logout(function(response) {
     	// user is now logged out
 		});
+		location.reload()
 	});
 
 	if($('#yelp-page').length) {
@@ -41,7 +42,7 @@ $( document ).ready(function() {
 		getYelpData(location,foodtype);
 	}
 
-	$('form#yelp').on('submit',function() {
+	$('form#yelp').submit(function() {
 		console.log('start');
 		var location = $('input#location' ).val();
 		console.log(location);
@@ -56,24 +57,22 @@ $( document ).ready(function() {
 	});
     
     // create new variable and put below in array to pass to people
-	var yelpchecked = []
+	var yelpchecked = [];
     // this is to get checkbox user input from yelp page
 	
-	$('button').on('click',function() {
+	$('#pickpeople').click(function() {
 		$('ul#yelplist input[type=checkbox]').each(function() {
 			if ($(this).is(':checked')) {
 				console.log($(this).val());
 				//yelpchecked = ($(this).val());
 				// console.log(yelpchecked);
-				yelpchecked.push($(this).val())
+				yelpchecked.push($(this).val());
 			}
-			
-			console.log(yelpchecked)
-	
 		})
+	console.log(yelpchecked);
 	})
-    
-    	if($('#people-page').length) {
+
+	if($('#people-page').length) {
 		var location = getParameterByName('location');
 		var foodtype = getParameterByName('foodtype');
 		console.log(location + ' ' + foodtype);
