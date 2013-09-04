@@ -76,15 +76,3 @@ function getYelpData(location,foodtype) {
     });
     
 };
-
-
-// function displayYelpData(){
-//     var businesslist = data.businesses
-//         console.log (businesslist[0])
-//         for (var i=0,len=businesslist.length; i<len; i++) {
-//             content = "<h3>" + businesslist[i].name + "</h3>"
-//             content += "<p>" + "Yelp Rating " + businesslist[i].rating + "</h3>"
-//             content += "<p>" + businesslist[i].snippet_text + "</h3>"
-//             $("#yelpresults").append(content + "<img src=" + businesslist[i].image_url + " /><br>");
-//             }
-// }

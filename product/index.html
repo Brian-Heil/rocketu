@@ -82,6 +82,7 @@
 		    	FB.api('/me/friends', function(response) {
 			    	console.log('Getting Friends');
 			    	console.log(response);
+			    	sessionStorage["fbfriends"] = JSON.stringify(response);
 			    });
 			};
 		</script>
@@ -105,10 +106,6 @@
 			</div>
 		</div>
 		<div id="content" style="background-color:white; width:1500px">
-			<!-- Login -->
-			<!-- <button id="loginjquery" type="button">LoginJQuery</button> -->
-			<!-- <button id="loginhref" type="button"><a href="/product/queue.html">Login</a></button> -->
-			<!-- Login button for facebook -->
 			<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 
 			<button id="logout">Logout</button>
