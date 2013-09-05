@@ -62,10 +62,10 @@ function getYelpData(location,foodtype) {
             console.log (businesslist[0]);
 
             for (var i=0,len=businesslist.length; i<len; i++) {
-                content = '<li><input type="checkbox" name="selection" value="' + businesslist[i].name + '">';
-                content += "<h3>" + businesslist[i].name + "</h3>";
-                content += "<p>" + "Yelp Rating " + businesslist[i].rating + "</p>";
-                content += "<p>" + businesslist[i].snippet_text + "</p>";
+                content = '<li><h4><input type="checkbox" name="selection" value="' + businesslist[i].name + '">';
+                content += " " + businesslist[i].name + "</h4>";
+                content += "<p>" + "Yelp Rating " + businesslist[i].rating;
+                content += " - " + businesslist[i].snippet_text + "</p>";
                 content += "<img src=" + businesslist[i].image_url + " /><br>";
                 content += "</li>";
                 $("ul#yelplist").append(content);
