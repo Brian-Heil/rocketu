@@ -1,4 +1,4 @@
-
+ 
 // jquery helper funtion
 function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
@@ -9,11 +9,31 @@ function sendRequest() {
     // Get the list of selected friends
     var sendUIDs = '';
     var mfsForm = document.getElementById('mfsForm');
-        for(var i = 0; i < mfsForm.friends.length; i++) {
-	        if(mfsForm.friends[i].checked) {
-	           sendUIDs += mfsForm.friends[i].value + ',';
-	        }
+    for(var i = 0; i < mfsForm.friends.length; i++) {
+        if(mfsForm.friends[i].checked) {
+           sendUIDs += mfsForm.friends[i].value + ',';
         }
+    }
+
+	$.ajax({
+		url: 'php/save-questions.php',
+		type: 'POST',
+		dataType: 'json',
+		data: {
+			user_ids:sendUIDs,
+			question_text:sessionStorage['question'],
+			question_foodtype:sessionStorage['foodtype'],
+			question_location:sessionStorage['location'],
+			yelpchecked_array:sessionStorage['yelpchecked'],
+			date: (new Date())
+		},
+		success : function(json) {
+			console.log(json);
+		}
+	});
+
+
+
     // Use FB.ui to send the Request(s)
 	// FB.ui({method: 'apprequests',
 	// 	to: sendUIDs,
@@ -64,9 +84,14 @@ $( document ).ready(function() {
 
 	$('form#yelp').submit(function() {
 		console.log('start');
+		var question = $('input#questionbox').val();
+		sessionStorage["question"] = JSON.stringify(question);
+		console.log(question);
 		var location = $('input#location' ).val();
+		sessionStorage["location"] = JSON.stringify(location);
 		console.log(location);
 		var foodtype = $('select#foodtype option:selected').val();
+		sessionStorage["foodtype"] = JSON.stringify(foodtype);
 		console.log(foodtype);
 
 		// VALIDATION TO MAKE SURE LOCATION AND FOODTYPE IS NOT NULL
