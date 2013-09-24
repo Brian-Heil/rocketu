@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script>
+            
+            $(document).ready( function() {
+                
+                $('#send-button').click( function() {
+                    
+                    var yelpchecked = [];
+                    
+                    $('input[type="checkbox"]:checked').each( function() {
+                        
+                        yelpchecked.push($(this).val());
+                        
+                    });
+                    
+                    console.log(yelpchecked);
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "php/sessions-test.php",
+                        data: { 
+                            question_text: 'Where shall I go?',
+                            yelpchecked_array: yelpchecked 
+                        }
+                        })
+                        .done(function( msg ) {
+                        alert( "Data Saved: " + msg );
+                    });
+                                        
+                });
+                
+            });
+            
+        </script>
+    </head>
+    <body>
+        
+        <input type="checkbox" name='personId' value='Place A'> Place A <br>
+        <input type="checkbox" name='personId' value='Place B'> Place B <br>
+        <input type="checkbox" name='personId' value='Place C'> Place C <br>
+        
+        <button id="send-button">Send</button>
+        
+        
+
+    </body>
+</html>

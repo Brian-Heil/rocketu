@@ -18,14 +18,18 @@
 	foreach ($user_ids_array as $id) {
 		$sql = "insert into questions_friends(question_friendid) values($id)";
 		$mysqli->query($sql);
-
-	$yelpchecked_array = $_POST['yelpchecked_array'];
-	$yelpchecked_array_text = json_decode($yelpchecked_array);
-	foreach ($yelpchecked_array_text as $yctext) {
-		$sql = "insert into questions_locations(question_location) values($yctext)";
-		$mysqli->query($sql);
 	}
+	$yelpchecked_array = $_POST['yelpchecked_array'];
+	foreach ($yelpchecked_array AS $location){
+		$location = $mysqli->real_escape_string($location);
+	    $sql = "INSERT INTO questions_locations(question_location) VALUES('{$location}')";
+	    $mysqli->query($sql) or die($mysqli->error);
 
-
+	// $yelpchecked_array = $_POST['yelpchecked_array'];
+	// $yelpchecked_array_text = $yelpchecked_array;
+	// foreach ($yelpchecked_array as $yctext) {
+	// 	$sql = "insert into questions_locations(question_location) values('$yctext')";
+	// 	$mysqli->query($sql);
+	}
 
 ?>

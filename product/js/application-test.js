@@ -1,10 +1,9 @@
  
 // jquery helper funtion
-//7
 function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-}//7
+}
 
 function sendRequest() {
     // Get the list of selected friends
@@ -15,10 +14,7 @@ function sendRequest() {
            sendUIDs += mfsForm.friends[i].value + ',';
         }
     }
-	
-	console.log(sendUIDs)
-	//8
-	//send data to php page to pass to database
+console.log(sendUIDs)
 	$.ajax({
 		url: 'php/save-questions.php',
 		type: 'POST',
@@ -34,15 +30,22 @@ function sendRequest() {
 		success : function(json) {
 			console.log(json);
 		}
-	});//8
+	});
 
-	console.log(sendUIDs)
+
+
+    // Use FB.ui to send the Request(s)
+	// FB.ui({method: 'apprequests',
+	// 	to: sendUIDs,
+	// 	title: 'My Great Invite',
+	// 	message: 'Check out this Awesome App!',
 	
-	//create facebook send dialog box
+	// }, callback);
+console.log(sendUIDs)
 	FB.ui({
 	  method: 'send',
 	  to: sendUIDs,
-	  link: 'http://friendlytables.com',
+	  link: 'http://friendlytables.com',//'http://rocket-space.com/rocketu/',
 	}, callback);
 	console.log(sendUIDs)
 }
@@ -52,7 +55,14 @@ function callback(response) {
 }
 
 $(document).ready(function() { 
-	//6
+
+	// $(input#questionbox).on('propertychange keyup input paste', 'input.data_field', function(){
+ //    var io = $(this).val().length ? 1 : 0 ;
+ //    $(this).next('.icon_clear').stop().fadeTo(300,io);
+	// }).on('click', '.icon_clear', function() {
+ //    $(this).delay(300).fadeTo(300,0).prev('input').val('');
+	// });
+
 	$("#loginjquery").click(function(){
 		window.location = "/product/queue.html"
 	});
@@ -62,6 +72,9 @@ $(document).ready(function() {
 	});
 	$("#draft").click(function(){
 		window.location = "/product/draft.html"
+	});
+	$("#queuelist").click(function(){
+		window.location = "/product/php/queue-list.php"
 	});
 
 	$("#vote").click(function(){
@@ -79,10 +92,10 @@ $(document).ready(function() {
 		var foodtype = getParameterByName('foodtype');
 		console.log(location + ' ' + foodtype);
 		getYelpData(location,foodtype);
-	};//6
+	};
 
 	//yelp page button send question, location and foodtype > sessionStorage
-	//5
+
 	$('form#yelp').submit(function() {
 		console.log('start');
 		var question = $('input#questionbox').val();
@@ -98,8 +111,8 @@ $(document).ready(function() {
 		// VALIDATION TO MAKE SURE LOCATION AND FOODTYPE IS NOT NULL
 		console.log('end');
 
-	});//5
-    //4
+	});
+    
     // create empty array as var to pass checked yelp
 	var yelpchecked = [];
     // this is to get checkbox user input from yelp page
@@ -117,39 +130,38 @@ $(document).ready(function() {
 	        data: { 
 	            yelpchecked_array: yelpchecked 
 	        },
-			success : function(json) {
-				console.log(json);
-			}
+		success : function(json) {
+			console.log(json);
+		}
 
         });
 
 		console.log(yelpchecked);
 		sessionStorage["yelpchecked"] = JSON.stringify(yelpchecked);
 		console.log(sessionStorage["yelpchecked"]);
-		window.location = "/product/people.html";
-	});//4
+		//window.location = "/product/people.html";
+	});
 
 	// check for people page - var fbfiends from session storage string to array for use in list
 	// loop through friends to create list w/ id as value & name displayed
-	//3
 	if($('#people-page').length) {
 
 	    window.fbAsyncInit = function() {
 		    FB.init({
 		        appId      : '539412832790457', // App ID
-		        channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+		        channelUrl : '/channel.html', // Channel File
 		        status     : true, // check login status
 		        cookie     : true, // enable cookies to allow the server to access the session
 		        xfbml      : true  // parse XFBML
 		    });
 		};
-	    // Load the SDK asynchronously
-		(function(d){
-		    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-		    if (d.getElementById(id)) {return;}
-		    js = d.createElement('script'); js.id = id; js.async = true;
-		    js.src = "//connect.facebook.net/en_US/all.js";
-		    ref.parentNode.insertBefore(js, ref);
+    // Load the SDK asynchronously
+	(function(d){
+	    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+	    if (d.getElementById(id)) {return;}
+	    js = d.createElement('script'); js.id = id; js.async = true;
+	    js.src = "//connect.facebook.net/en_US/all.js";
+	    ref.parentNode.insertBefore(js, ref);
 	    }(document));
 
 		//console, parse string to json array & var sessionStorage
@@ -180,14 +192,13 @@ $(document).ready(function() {
 	    sendButton.onclick = sendRequest;
 	    mfsForm.appendChild(sendButton);
 
-	};//3
-	//2
+	};
+
 	if($('#settings-page').length) {
 		console.log(JSON.parse(sessionStorage["yelpchecked"]));
 		console.log(JSON.parse(sessionStorage["fbfriends"]));
 		var fbfriends=JSON.parse(sessionStorage["fbfriends"]);
 		
-	    //1
 	    window.fbAsyncInit = function() {
 		    FB.init({
 		        appId      : '539412832790457', // App ID
@@ -223,6 +234,10 @@ $(document).ready(function() {
 				    mfsForm.appendChild(sendButton);
 			    });
 		    };
-		};//1
-	};//2
+		};
+	};
+	if($('#queue-page').length) {
+
+	});
+
 });

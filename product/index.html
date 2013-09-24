@@ -1,9 +1,10 @@
 <!doctype html>
 <html>
+
 <head>
 	<title>Login</title>
 	<!-- // <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script> 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/application.css"/>
 	<script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
@@ -22,7 +23,7 @@
 		    window.fbAsyncInit = function() {
 			    FB.init({
 			        appId      : '539412832790457', // App ID
-			        channelUrl : '//WWW.YOUR_DOMAIN.COM/channel.html', // Channel File
+			        channelUrl : '//WWW.friendlytables.COM/channel.html', // Channel File
 			        status     : true, // check login status
 			        cookie     : true, // enable cookies to allow the server to access the session
 			        xfbml      : true  // parse XFBML
@@ -39,6 +40,7 @@
 			        // login status of the person. In this case, we're handling the situation where they 
 			        // have logged in to the app.
 			    	testAPI();
+			    	// window.location = "queue.html"
 			    } else if (response.status === 'not_authorized') {
 			        // In this case, the person is logged into Facebook, but not into the app, so we call
 			        // FB.login() to prompt them to do so. 
@@ -55,6 +57,7 @@
 			        // dialog right after they log in to Facebook. 
 			        // The same caveats as above apply to the FB.login() call here.
 			        FB.login();
+			        // window.location = "queue.html"
 			    }
 				});
 		    		// Additional init code here
@@ -93,7 +96,7 @@
 		</div>
 		<div id="nav" class="navbar">
 			<div class="navbar-inner">
-				<a class="brand" href="#">Favorite Feast</a>
+				<a class="brand" href="#">Friendly Tables</a>
 				<ul class="nav">
 					<li class="active"><a href="index.html">Login</a></li>
 					<li><a href="queue.html">Queue</a></li>
@@ -108,7 +111,7 @@
 		<div id="content" style="background-color:white; width:1500px">
 			<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 
-			<button id="logout">Logout</button>
+			<!-- <button id="logout">Logout</button> -->
 		</div>
 		<div id="footer">
 		
