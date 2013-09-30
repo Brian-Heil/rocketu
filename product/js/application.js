@@ -1,10 +1,9 @@
  
 // jquery helper funtion
-//7
 function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-}//7
+}
 
 function sendRequest() {
     // Get the list of selected friends
@@ -15,9 +14,9 @@ function sendRequest() {
            sendUIDs += mfsForm.friends[i].value + ',';
         }
     }
-	
+	//sendUIDs = sendUIDs.substring(0,sendUIDs.length-1);
+
 	console.log(sendUIDs)
-	//8
 	//send data to php page to pass to database
 	$.ajax({
 		url: 'php/save-questions.php',
@@ -34,16 +33,29 @@ function sendRequest() {
 		success : function(json) {
 			console.log(json);
 		}
-	});//8
+	});
 
 	console.log(sendUIDs)
-	
+
 	//create facebook send dialog box
+	// FB.ui({
+	//   method: 'send',
+	//   to: sendUIDs,
+	//   link: 'http://friendlytables.com',
+	// }, callback);
+
+	//create facebook send dialog box
+
+	userquestion = sessionStorage['question']
 	FB.ui({
-	  method: 'send',
+	  method: 'apprequests',
 	  to: sendUIDs,
-	  link: 'http://friendlytables.com',
+	  title: 'Please vote!',
+	  message: userquestion,
+	  redirect_uri: 'http://www.friendlytables.com',
+	  //link: 'http://friendlytables.com',
 	}, callback);
+
 	console.log(sendUIDs)
 }
 
@@ -52,7 +64,7 @@ function callback(response) {
 }
 
 $(document).ready(function() { 
-	//6
+
 	$("#loginjquery").click(function(){
 		window.location = "/product/queue.html"
 	});
@@ -79,10 +91,10 @@ $(document).ready(function() {
 		var foodtype = getParameterByName('foodtype');
 		console.log(location + ' ' + foodtype);
 		getYelpData(location,foodtype);
-	};//6
+	};
 
 	//yelp page button send question, location and foodtype > sessionStorage
-	//5
+
 	$('form#yelp').submit(function() {
 		console.log('start');
 		var question = $('input#questionbox').val();
@@ -98,8 +110,8 @@ $(document).ready(function() {
 		// VALIDATION TO MAKE SURE LOCATION AND FOODTYPE IS NOT NULL
 		console.log('end');
 
-	});//5
-    //4
+	});
+
     // create empty array as var to pass checked yelp
 	var yelpchecked = [];
     // this is to get checkbox user input from yelp page
@@ -127,11 +139,11 @@ $(document).ready(function() {
 		sessionStorage["yelpchecked"] = JSON.stringify(yelpchecked);
 		console.log(sessionStorage["yelpchecked"]);
 		window.location = "/product/people.html";
-	});//4
+	});
 
 	// check for people page - var fbfiends from session storage string to array for use in list
 	// loop through friends to create list w/ id as value & name displayed
-	//3
+
 	if($('#people-page').length) {
 
 	    window.fbAsyncInit = function() {
@@ -163,7 +175,7 @@ $(document).ready(function() {
 	    mfsForm.id = 'mfsForm';
 
 	    // Iterate through the array of friends object and create a checkbox for each one.
-	    for(var i = 0; i < Math.min(fbfriends.data.length, 10); i++) {
+	    for(var i = 0; i < Math.min(fbfriends.data.length); i++) {
 		    var friendItem = document.createElement('div');
 		    friendItem.id = 'friend_' + fbfriends.data[i].id;
 		    friendItem.innerHTML = '<input type="checkbox" name="friends" value="'
@@ -180,14 +192,13 @@ $(document).ready(function() {
 	    sendButton.onclick = sendRequest;
 	    mfsForm.appendChild(sendButton);
 
-	};//3
-	//2
+	};
+
 	if($('#settings-page').length) {
 		console.log(JSON.parse(sessionStorage["yelpchecked"]));
 		console.log(JSON.parse(sessionStorage["fbfriends"]));
 		var fbfriends=JSON.parse(sessionStorage["fbfriends"]);
 		
-	    //1
 	    window.fbAsyncInit = function() {
 		    FB.init({
 		        appId      : '539412832790457', // App ID
@@ -223,6 +234,6 @@ $(document).ready(function() {
 				    mfsForm.appendChild(sendButton);
 			    });
 		    };
-		};//1
-	};//2
+		};
+	};
 });

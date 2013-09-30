@@ -33,6 +33,38 @@
 			</div>
 
 		</div>
+		<!-- Poll view -->
+		<div>
+			<form class="webPoll" method="post" action="php/vote.php">  
+			    <h4>What question would you like to ask?</h4>  
+			    <fieldset>  
+				    <ul>  
+				        <li>  
+				            <label class='poll_active'>  
+				            <input type='radio' name='AID' value='0'>  
+				            First Answer Here  
+				            </label>  
+				        </li>  
+				    </ul>  
+			    </fieldset>  
+			    <p class="buttons">  
+			        <button type="submit" class="vote">Vote!</button>  
+			    </p>  
+			</form>  
+
+		</div>
+		<!-- Answer view -->
+		<div>
+			<li>  
+			    <div class='result' style='width:20px;'>&nbsp;</div>  
+				    <label class='poll_results'>  
+				        10%: First Answer Here  
+				    </label>  
+			</li>  
+		</div>
+
+
+
 		<div id="footer">
 		
 		</div>
